@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI API Hub
 
-## Getting Started
+Live-tested directory of AI and LLM APIs. Free tiers highlighted. Code snippets in Python, JS, and cURL included.
 
-First, run the development server:
+Status badges are updated daily via GitHub Actions.
+
+## Stack
+
+- Next.js 14 with static export
+- Tailwind CSS
+- GitHub Actions for daily health checks
+- Vercel for hosting
+
+## Contributing
+
+To add a new API:
+
+1. Fork the repo
+2. Add your entry to `data/apis.json` (copy the shape of an existing entry)
+3. Leave `snippets` as empty strings, maintainers will generate them
+4. Open a pull request
+
+The PR template will guide you through the required fields.
+
+## Running locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Generating code snippets
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+GROQ_API_KEY=your_key node scripts/generate-snippets.js --id <api-id>
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Health checks
 
-## Learn More
+The health check runs daily at 06:00 UTC via GitHub Actions. To run it manually:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+node scripts/health-check.js
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
