@@ -18,6 +18,9 @@
   --live: #34d399;
   --down: #f87171;
   --free: #a78bfa;
+  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+  --font-manrope: 'Manrope', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 }
 
 *,
