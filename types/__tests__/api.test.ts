@@ -1,4 +1,4 @@
-import type { ApiEntry, FilterType, History } from '../api'
+import type { ApiEntry } from '../api'
 
 describe('ApiEntry type', () => {
   it('accepts a valid entry', () => {
