@@ -1,0 +1,218 @@
+[
+  {
+    "id": "groq",
+    "name": "Groq",
+    "description": "Ultra-fast LLM inference using LPU hardware. Supports Llama 3, Mixtral, and Gemma.",
+    "url": "https://console.groq.com",
+    "docsUrl": "https://console.groq.com/docs",
+    "category": "inference",
+    "models": ["llama3-8b-8192", "llama3-70b-8192", "mixtral-8x7b-32768", "gemma-7b-it"],
+    "freeTier": { "available": true, "details": "14,400 req/day, 30 req/min" },
+    "auth": "api_key",
+    "status": { "alive": true, "lastChecked": "2026-05-29T06:00:00Z", "latencyMs": 210 },
+    "tags": ["llama3", "mixtral", "fast"],
+    "snippets": {
+      "python": "from groq import Groq\n\nclient = Groq(api_key=\"YOUR_KEY\")\nres = client.chat.completions.create(\n    model=\"llama3-8b-8192\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello\"}]\n)\nprint(res.choices[0].message.content)",
+      "javascript": "import Groq from 'groq-sdk'\n\nconst groq = new Groq({ apiKey: process.env.GROQ_API_KEY })\nconst res = await groq.chat.completions.create({\n  model: 'llama3-8b-8192',\n  messages: [{ role: 'user', content: 'Hello' }]\n})\nconsole.log(res.choices[0].message.content)",
+      "curl": "curl https://api.groq.com/openai/v1/chat/completions \\\n  -H \"Authorization: Bearer YOUR_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\":\"llama3-8b-8192\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}]}'"
+    }
+  },
+  {
+    "id": "mistral",
+    "name": "Mistral",
+    "description": "European open-weight LLMs with no daily request cap on the free tier.",
+    "url": "https://console.mistral.ai",
+    "docsUrl": "https://docs.mistral.ai",
+    "category": "inference",
+    "models": ["mistral-small-latest", "mistral-medium-latest", "mistral-large-latest"],
+    "freeTier": { "available": true, "details": "1 req/sec, no daily cap" },
+    "auth": "api_key",
+    "status": { "alive": true, "lastChecked": "2026-05-29T06:00:00Z", "latencyMs": 380 },
+    "tags": ["mistral-7b", "open-weight"],
+    "snippets": {
+      "python": "from mistralai import Mistral\n\nclient = Mistral(api_key=\"YOUR_KEY\")\nres = client.chat.complete(\n    model=\"mistral-small-latest\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello\"}]\n)\nprint(res.choices[0].message.content)",
+      "javascript": "import Mistral from '@mistralai/mistralai'\n\nconst client = new Mistral({ apiKey: process.env.MISTRAL_API_KEY })\nconst res = await client.chat.complete({\n  model: 'mistral-small-latest',\n  messages: [{ role: 'user', content: 'Hello' }]\n})\nconsole.log(res.choices[0].message.content)",
+      "curl": "curl https://api.mistral.ai/v1/chat/completions \\\n  -H \"Authorization: Bearer YOUR_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\":\"mistral-small-latest\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}]}'"
+    }
+  },
+  {
+    "id": "huggingface",
+    "name": "Hugging Face",
+    "description": "Access thousands of open-source models via a single API. No key needed for public models.",
+    "url": "https://huggingface.co",
+    "docsUrl": "https://huggingface.co/docs/api-inference",
+    "category": "inference",
+    "models": ["gpt2", "mistralai/Mistral-7B-v0.1", "meta-llama/Llama-2-7b-chat-hf"],
+    "freeTier": { "available": true, "details": "Rate-limited, no key needed" },
+    "auth": "optional",
+    "status": { "alive": true, "lastChecked": "2026-05-29T06:00:00Z", "latencyMs": 520 },
+    "tags": ["multi-model", "open-source"],
+    "snippets": {
+      "python": "import requests\n\nAPI_URL = \"https://api-inference.huggingface.co/models/gpt2\"\nheaders = {\"Authorization\": \"Bearer YOUR_KEY\"}\nres = requests.post(API_URL, headers=headers, json={\"inputs\": \"Hello\"})\nprint(res.json())",
+      "javascript": "const res = await fetch(\n  \"https://api-inference.huggingface.co/models/gpt2\",\n  {\n    method: \"POST\",\n    headers: { \"Authorization\": \"Bearer YOUR_KEY\" },\n    body: JSON.stringify({ inputs: \"Hello\" })\n  }\n)\nconsole.log(await res.json())",
+      "curl": "curl https://api-inference.huggingface.co/models/gpt2 \\\n  -H \"Authorization: Bearer YOUR_KEY\" \\\n  -d '{\"inputs\":\"Hello\"}'"
+    }
+  },
+  {
+    "id": "together",
+    "name": "Together AI",
+    "description": "Run 50+ open-source models. Competitive pay-as-you-go pricing with a signup credit.",
+    "url": "https://api.together.ai",
+    "docsUrl": "https://docs.together.ai",
+    "category": "inference",
+    "models": ["meta-llama/Llama-3-8b-chat-hf", "Qwen/Qwen2-72B-Instruct", "mistralai/Mixtral-8x7B-Instruct-v0.1"],
+    "freeTier": { "available": true, "details": "$1 credit on signup" },
+    "auth": "api_key",
+    "status": { "alive": true, "lastChecked": "2026-05-29T06:00:00Z", "latencyMs": 320 },
+    "tags": ["llama3", "qwen", "multi-model"],
+    "snippets": {
+      "python": "from together import Together\n\nclient = Together(api_key=\"YOUR_KEY\")\nres = client.chat.completions.create(\n    model=\"meta-llama/Llama-3-8b-chat-hf\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello\"}]\n)\nprint(res.choices[0].message.content)",
+      "javascript": "import Together from 'together-ai'\n\nconst client = new Together({ apiKey: process.env.TOGETHER_API_KEY })\nconst res = await client.chat.completions.create({\n  model: 'meta-llama/Llama-3-8b-chat-hf',\n  messages: [{ role: 'user', content: 'Hello' }]\n})\nconsole.log(res.choices[0].message.content)",
+      "curl": "curl https://api.together.xyz/v1/chat/completions \\\n  -H \"Authorization: Bearer YOUR_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\":\"meta-llama/Llama-3-8b-chat-hf\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}]}'"
+    }
+  },
+  {
+    "id": "anthropic",
+    "name": "Anthropic",
+    "description": "Claude model family. Best-in-class reasoning and 200k token context window.",
+    "url": "https://console.anthropic.com",
+    "docsUrl": "https://docs.anthropic.com",
+    "category": "inference",
+    "models": ["claude-opus-4-7", "claude-sonnet-4-6", "claude-haiku-4-5-20251001"],
+    "freeTier": { "available": false, "details": "$3/M input tokens (Sonnet)" },
+    "auth": "api_key",
+    "status": { "alive": true, "lastChecked": "2026-05-29T06:00:00Z", "latencyMs": 490 },
+    "tags": ["claude", "reasoning", "long-ctx"],
+    "snippets": {
+      "python": "import anthropic\n\nclient = anthropic.Anthropic(api_key=\"YOUR_KEY\")\nmsg = client.messages.create(\n    model=\"claude-sonnet-4-6\",\n    max_tokens=1024,\n    messages=[{\"role\": \"user\", \"content\": \"Hello\"}]\n)\nprint(msg.content[0].text)",
+      "javascript": "import Anthropic from '@anthropic-ai/sdk'\n\nconst client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })\nconst msg = await client.messages.create({\n  model: 'claude-sonnet-4-6',\n  max_tokens: 1024,\n  messages: [{ role: 'user', content: 'Hello' }]\n})\nconsole.log(msg.content[0].text)",
+      "curl": "curl https://api.anthropic.com/v1/messages \\\n  -H \"x-api-key: YOUR_KEY\" \\\n  -H \"anthropic-version: 2023-06-01\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\":\"claude-sonnet-4-6\",\"max_tokens\":1024,\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}]}'"
+    }
+  },
+  {
+    "id": "openai",
+    "name": "OpenAI",
+    "description": "GPT-4o and o-series models. Industry standard with the widest ecosystem support.",
+    "url": "https://platform.openai.com",
+    "docsUrl": "https://platform.openai.com/docs",
+    "category": "inference",
+    "models": ["gpt-4o", "gpt-4o-mini", "o3", "o4-mini"],
+    "freeTier": { "available": false, "details": "$0.005/1K tokens (gpt-4o-mini)" },
+    "auth": "api_key",
+    "status": { "alive": true, "lastChecked": "2026-05-29T06:00:00Z", "latencyMs": 450 },
+    "tags": ["gpt-4o", "o3", "vision"],
+    "snippets": {
+      "python": "from openai import OpenAI\n\nclient = OpenAI(api_key=\"YOUR_KEY\")\nres = client.chat.completions.create(\n    model=\"gpt-4o-mini\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello\"}]\n)\nprint(res.choices[0].message.content)",
+      "javascript": "import OpenAI from 'openai'\n\nconst openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })\nconst res = await openai.chat.completions.create({\n  model: 'gpt-4o-mini',\n  messages: [{ role: 'user', content: 'Hello' }]\n})\nconsole.log(res.choices[0].message.content)",
+      "curl": "curl https://api.openai.com/v1/chat/completions \\\n  -H \"Authorization: Bearer YOUR_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\":\"gpt-4o-mini\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}]}'"
+    }
+  },
+  {
+    "id": "cohere",
+    "name": "Cohere",
+    "description": "Enterprise RAG and embeddings. Best-in-class reranking and multilingual support.",
+    "url": "https://dashboard.cohere.com",
+    "docsUrl": "https://docs.cohere.com",
+    "category": "embeddings",
+    "models": ["embed-english-v3.0", "embed-multilingual-v3.0", "rerank-english-v3.0"],
+    "freeTier": { "available": false, "details": "Free tier ended Jan 2025" },
+    "auth": "api_key",
+    "status": { "alive": false, "lastChecked": "2026-05-29T06:00:00Z", "latencyMs": null },
+    "tags": ["rag", "embed", "rerank"],
+    "snippets": {
+      "python": "import cohere\n\nco = cohere.Client(\"YOUR_KEY\")\nres = co.embed(\n    texts=[\"Hello world\"],\n    model=\"embed-english-v3.0\",\n    input_type=\"search_document\"\n)\nprint(res.embeddings[0][:5])",
+      "javascript": "import { CohereClient } from 'cohere-ai'\n\nconst cohere = new CohereClient({ token: process.env.COHERE_API_KEY })\nconst res = await cohere.embed({\n  texts: ['Hello world'],\n  model: 'embed-english-v3.0',\n  inputType: 'search_document'\n})\nconsole.log(res.embeddings[0].slice(0, 5))",
+      "curl": "curl https://api.cohere.com/v1/embed \\\n  -H \"Authorization: Bearer YOUR_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"texts\":[\"Hello world\"],\"model\":\"embed-english-v3.0\",\"input_type\":\"search_document\"}'"
+    }
+  },
+  {
+    "id": "voyage",
+    "name": "Voyage AI",
+    "description": "State-of-the-art embedding models. Used by Anthropic for RAG use cases.",
+    "url": "https://www.voyageai.com",
+    "docsUrl": "https://docs.voyageai.com",
+    "category": "embeddings",
+    "models": ["voyage-3", "voyage-3-lite", "voyage-code-3"],
+    "freeTier": { "available": true, "details": "50M tokens free per month" },
+    "auth": "api_key",
+    "status": { "alive": true, "lastChecked": "2026-05-29T06:00:00Z", "latencyMs": 290 },
+    "tags": ["embeddings", "rag", "retrieval"],
+    "snippets": {
+      "python": "import voyageai\n\nvo = voyageai.Client(api_key=\"YOUR_KEY\")\nresult = vo.embed(\n    [\"Hello world\"],\n    model=\"voyage-3\",\n    input_type=\"document\"\n)\nprint(result.embeddings[0][:5])",
+      "javascript": "import VoyageAIClient from 'voyageai'\n\nconst vo = new VoyageAIClient({ apiKey: process.env.VOYAGE_API_KEY })\nconst result = await vo.embed({\n  input: ['Hello world'],\n  model: 'voyage-3',\n  inputType: 'document'\n})\nconsole.log(result.embeddings[0].slice(0, 5))",
+      "curl": "curl https://api.voyageai.com/v1/embeddings \\\n  -H \"Authorization: Bearer YOUR_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"input\":[\"Hello world\"],\"model\":\"voyage-3\",\"input_type\":\"document\"}'"
+    }
+  },
+  {
+    "id": "stability",
+    "name": "Stability AI",
+    "description": "Stable Diffusion and SDXL image generation with high quality customizable outputs.",
+    "url": "https://platform.stability.ai",
+    "docsUrl": "https://platform.stability.ai/docs",
+    "category": "image-gen",
+    "models": ["stable-diffusion-v1-6", "stable-diffusion-xl-1024-v1-0"],
+    "freeTier": { "available": true, "details": "25 free credits on signup" },
+    "auth": "api_key",
+    "status": { "alive": true, "lastChecked": "2026-05-29T06:00:00Z", "latencyMs": 1800 },
+    "tags": ["stable-diffusion", "sdxl", "image"],
+    "snippets": {
+      "python": "import requests, base64\n\nres = requests.post(\n    \"https://api.stability.ai/v1/generation/stable-diffusion-v1-6/text-to-image\",\n    headers={\"Authorization\": \"Bearer YOUR_KEY\"},\n    json={\"text_prompts\": [{\"text\": \"a cat in space\"}], \"samples\": 1}\n)\nwith open(\"out.png\", \"wb\") as f:\n    f.write(base64.b64decode(res.json()[\"artifacts\"][0][\"base64\"]))",
+      "javascript": "const res = await fetch(\n  'https://api.stability.ai/v1/generation/stable-diffusion-v1-6/text-to-image',\n  {\n    method: 'POST',\n    headers: { 'Authorization': 'Bearer YOUR_KEY', 'Content-Type': 'application/json' },\n    body: JSON.stringify({ text_prompts: [{ text: 'a cat in space' }], samples: 1 })\n  }\n)\nconsole.log(await res.json())",
+      "curl": "curl https://api.stability.ai/v1/generation/stable-diffusion-v1-6/text-to-image \\\n  -H \"Authorization: Bearer YOUR_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"text_prompts\":[{\"text\":\"a cat in space\"}],\"samples\":1}'"
+    }
+  },
+  {
+    "id": "replicate",
+    "name": "Replicate",
+    "description": "Run any open-source AI model via API. Covers image, video, audio, and language models.",
+    "url": "https://replicate.com",
+    "docsUrl": "https://replicate.com/docs",
+    "category": "image-gen",
+    "models": ["black-forest-labs/flux-schnell", "stability-ai/sdxl", "meta/llama-2-70b-chat"],
+    "freeTier": { "available": true, "details": "$5 free credit on signup" },
+    "auth": "api_key",
+    "status": { "alive": true, "lastChecked": "2026-05-29T06:00:00Z", "latencyMs": 2200 },
+    "tags": ["sdxl", "flux", "multi-model"],
+    "snippets": {
+      "python": "import replicate\n\noutput = replicate.run(\n    \"black-forest-labs/flux-schnell\",\n    input={\"prompt\": \"a cat in space\"}\n)\nprint(output)",
+      "javascript": "import Replicate from 'replicate'\n\nconst replicate = new Replicate({ auth: process.env.REPLICATE_API_TOKEN })\nconst output = await replicate.run(\n  'black-forest-labs/flux-schnell',\n  { input: { prompt: 'a cat in space' } }\n)\nconsole.log(output)",
+      "curl": "curl https://api.replicate.com/v1/models/black-forest-labs/flux-schnell/predictions \\\n  -H \"Authorization: Bearer YOUR_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"input\":{\"prompt\":\"a cat in space\"}}'"
+    }
+  },
+  {
+    "id": "google-gemini",
+    "name": "Google Gemini",
+    "description": "Gemini 1.5 Pro and Flash models. 1M token context, vision, audio, and code support.",
+    "url": "https://aistudio.google.com",
+    "docsUrl": "https://ai.google.dev/docs",
+    "category": "multimodal",
+    "models": ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-2.0-flash"],
+    "freeTier": { "available": true, "details": "15 RPM, 1M TPM on Flash" },
+    "auth": "api_key",
+    "status": { "alive": true, "lastChecked": "2026-05-29T06:00:00Z", "latencyMs": 410 },
+    "tags": ["gemini", "vision", "long-ctx"],
+    "snippets": {
+      "python": "import google.generativeai as genai\n\ngenai.configure(api_key=\"YOUR_KEY\")\nmodel = genai.GenerativeModel(\"gemini-1.5-flash\")\nres = model.generate_content(\"Hello\")\nprint(res.text)",
+      "javascript": "import { GoogleGenerativeAI } from '@google/generative-ai'\n\nconst genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)\nconst model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })\nconst result = await model.generateContent('Hello')\nconsole.log(result.response.text())",
+      "curl": "curl \"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=YOUR_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"contents\":[{\"parts\":[{\"text\":\"Hello\"}]}]}'"
+    }
+  },
+  {
+    "id": "deepseek",
+    "name": "DeepSeek",
+    "description": "High performance open-source models at very low cost. Strong on coding and math.",
+    "url": "https://platform.deepseek.com",
+    "docsUrl": "https://platform.deepseek.com/api-docs",
+    "category": "inference",
+    "models": ["deepseek-chat", "deepseek-coder", "deepseek-v3"],
+    "freeTier": { "available": true, "details": "500M tokens free on signup" },
+    "auth": "api_key",
+    "status": { "alive": true, "lastChecked": "2026-05-29T06:00:00Z", "latencyMs": 560 },
+    "tags": ["deepseek-v3", "coding", "cheap"],
+    "snippets": {
+      "python": "from openai import OpenAI\n\nclient = OpenAI(api_key=\"YOUR_KEY\", base_url=\"https://api.deepseek.com\")\nres = client.chat.completions.create(\n    model=\"deepseek-chat\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello\"}]\n)\nprint(res.choices[0].message.content)",
+      "javascript": "import OpenAI from 'openai'\n\nconst client = new OpenAI({ apiKey: process.env.DEEPSEEK_API_KEY, baseURL: 'https://api.deepseek.com' })\nconst res = await client.chat.completions.create({\n  model: 'deepseek-chat',\n  messages: [{ role: 'user', content: 'Hello' }]\n})\nconsole.log(res.choices[0].message.content)",
+      "curl": "curl https://api.deepseek.com/chat/completions \\\n  -H \"Authorization: Bearer YOUR_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\":\"deepseek-chat\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}]}'"
+    }
+  }
+]

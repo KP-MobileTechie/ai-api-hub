@@ -1,0 +1,29 @@
+{
+  "groq": [
+    { "date": "2026-05-23", "alive": true, "latencyMs": 198 },
+    { "date": "2026-05-24", "alive": true, "latencyMs": 205 },
+    { "date": "2026-05-25", "alive": true, "latencyMs": 212 },
+    { "date": "2026-05-26", "alive": true, "latencyMs": 201 },
+    { "date": "2026-05-27", "alive": true, "latencyMs": 220 },
+    { "date": "2026-05-28", "alive": true, "latencyMs": 215 },
+    { "date": "2026-05-29", "alive": true, "latencyMs": 210 }
+  ],
+  "mistral": [
+    { "date": "2026-05-23", "alive": true, "latencyMs": 390 },
+    { "date": "2026-05-24", "alive": true, "latencyMs": 375 },
+    { "date": "2026-05-25", "alive": true, "latencyMs": 395 },
+    { "date": "2026-05-26", "alive": true, "latencyMs": 370 },
+    { "date": "2026-05-27", "alive": true, "latencyMs": 385 },
+    { "date": "2026-05-28", "alive": true, "latencyMs": 380 },
+    { "date": "2026-05-29", "alive": true, "latencyMs": 380 }
+  ],
+  "cohere": [
+    { "date": "2026-05-23", "alive": true, "latencyMs": 340 },
+    { "date": "2026-05-24", "alive": true, "latencyMs": 355 },
+    { "date": "2026-05-25", "alive": false, "latencyMs": null },
+    { "date": "2026-05-26", "alive": false, "latencyMs": null },
+    { "date": "2026-05-27", "alive": false, "latencyMs": null },
+    { "date": "2026-05-28", "alive": false, "latencyMs": null },
+    { "date": "2026-05-29", "alive": false, "latencyMs": null }
+  ]
+}
