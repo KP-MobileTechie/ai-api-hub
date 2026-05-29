@@ -1,5 +1,7 @@
 # AI API Hub
 
+**Live:** https://ai-api-hub.vercel.app
+
 Live-tested directory of AI and LLM APIs. Free tiers highlighted. Code snippets in Python, JS, and cURL included.
 
 Status badges are updated daily via GitHub Actions.
