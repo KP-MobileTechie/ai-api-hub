@@ -5,8 +5,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-jakarta)', 'sans-serif'],
-        display: ['var(--font-manrope)', 'sans-serif'],
+        sans: ['var(--font-body)', 'sans-serif'],
+        display: ['var(--font-display)', 'sans-serif'],
         mono: ['var(--font-mono)', 'monospace'],
       },
     },
