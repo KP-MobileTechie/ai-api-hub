@@ -40,17 +40,20 @@ body {
 @layer components {
   .api-card {
     position: relative;
+    overflow: hidden;
+    cursor: pointer;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 16px;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
 
   .api-card:hover {
-    border-color: var(--border-hover);
-    box-shadow: 0 0 24px rgba(168, 85, 247, 0.12);
+    border-color: rgba(168, 85, 247, 0.35);
+    box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.1), 0 8px 32px rgba(168, 85, 247, 0.12);
+    transform: translateY(-2px);
   }
 
   .api-card::before {
@@ -69,11 +72,33 @@ body {
   }
 
   .status-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(52, 211, 153, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    border-radius: 20px;
+    padding: 3px 9px;
+    font-size: 10px;
+    font-weight: 600;
     color: var(--live);
+    font-family: 'IBM Plex Mono', monospace;
+    white-space: nowrap;
   }
 
   .status-down {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(248, 113, 113, 0.08);
+    border: 1px solid rgba(248, 113, 113, 0.2);
+    border-radius: 20px;
+    padding: 3px 9px;
+    font-size: 10px;
+    font-weight: 600;
     color: var(--down);
+    font-family: 'IBM Plex Mono', monospace;
+    white-space: nowrap;
   }
 
   .dot {
@@ -94,11 +119,23 @@ body {
   }
 
   .card-free {
-    border-color: rgba(167, 139, 250, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(167, 139, 250, 0.08);
+    border: 1px solid rgba(167, 139, 250, 0.2);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--free);
+    margin-bottom: 12px;
   }
 
   .card-free.no-free {
-    border-color: var(--border);
+    background: rgba(248, 113, 113, 0.05);
+    border-color: rgba(248, 113, 113, 0.15);
+    color: var(--down);
   }
 
   .chip {
