@@ -38,19 +38,19 @@
   {
     "id": "huggingface",
     "name": "Hugging Face",
-    "description": "Access thousands of open-source models via a single API. No key needed for public models.",
+    "description": "Access thousands of open-source models via a single OpenAI-compatible API. Free with a Hugging Face token.",
     "url": "https://huggingface.co",
-    "docsUrl": "https://huggingface.co/docs/api-inference",
+    "docsUrl": "https://huggingface.co/docs/api-inference/getting-started",
     "category": "inference",
-    "models": ["gpt2", "mistralai/Mistral-7B-v0.1", "meta-llama/Llama-2-7b-chat-hf"],
-    "freeTier": { "available": true, "details": "Rate-limited, no key needed" },
-    "auth": "optional",
+    "models": ["meta-llama/Meta-Llama-3-8B-Instruct", "mistralai/Mistral-7B-Instruct-v0.3", "Qwen/Qwen2.5-72B-Instruct"],
+    "freeTier": { "available": true, "details": "Free with HF token, rate-limited" },
+    "auth": "api_key",
     "status": { "alive": true, "lastChecked": "2026-05-29T06:00:00Z", "latencyMs": 520 },
     "tags": ["multi-model", "open-source"],
     "snippets": {
-      "python": "import requests\n\nAPI_URL = \"https://api-inference.huggingface.co/models/gpt2\"\nheaders = {\"Authorization\": \"Bearer YOUR_KEY\"}\nres = requests.post(API_URL, headers=headers, json={\"inputs\": \"Hello\"})\nprint(res.json())",
-      "javascript": "const res = await fetch(\n  \"https://api-inference.huggingface.co/models/gpt2\",\n  {\n    method: \"POST\",\n    headers: { \"Authorization\": \"Bearer YOUR_KEY\" },\n    body: JSON.stringify({ inputs: \"Hello\" })\n  }\n)\nconsole.log(await res.json())",
-      "curl": "curl https://api-inference.huggingface.co/models/gpt2 \\\n  -H \"Authorization: Bearer YOUR_KEY\" \\\n  -d '{\"inputs\":\"Hello\"}'"
+      "python": "from huggingface_hub import InferenceClient\n\nclient = InferenceClient(api_key=\"YOUR_HF_TOKEN\")\nres = client.chat.completions.create(\n    model=\"meta-llama/Meta-Llama-3-8B-Instruct\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello\"}],\n    max_tokens=500\n)\nprint(res.choices[0].message.content)",
+      "javascript": "import { InferenceClient } from '@huggingface/inference'\n\nconst client = new InferenceClient(process.env.HF_TOKEN)\nconst res = await client.chatCompletion({\n  model: 'meta-llama/Meta-Llama-3-8B-Instruct',\n  messages: [{ role: 'user', content: 'Hello' }],\n  max_tokens: 500\n})\nconsole.log(res.choices[0].message.content)",
+      "curl": "curl https://api-inference.huggingface.co/v1/chat/completions \\\n  -H \"Authorization: Bearer YOUR_HF_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\":\"meta-llama/Meta-Llama-3-8B-Instruct\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}],\"max_tokens\":500}'"
     }
   },
   {

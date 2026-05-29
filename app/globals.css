@@ -42,6 +42,7 @@ body {
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    padding: 20px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 16px;

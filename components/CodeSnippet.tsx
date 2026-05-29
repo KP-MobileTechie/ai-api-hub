@@ -35,7 +35,7 @@ export function CodeSnippet({ snippets, latencyMs }: Props) {
         </span>
       </div>
       <pre
-        className="rounded-lg p-3 text-[10.5px] leading-relaxed overflow-x-auto max-h-28"
+        className="rounded-lg p-3 text-[10.5px] leading-relaxed overflow-auto max-h-[120px]"
         style={{
           background: 'rgba(0,0,0,0.35)',
           border: '1px solid rgba(255,255,255,0.05)',
