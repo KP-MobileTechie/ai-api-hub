@@ -169,14 +169,16 @@ export function NavBar({ liveCount, apis }: Props) {
 
         {/* Right actions */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-          <button
-            onClick={() => showToast('Submit API form coming soon')}
-            style={linkStyle}
+          <a
+            href="https://github.com/KP-MobileTechie/ai-api-hub/issues/new?template=submit-api.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ ...linkStyle, textDecoration: 'none' }}
             onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
             onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-2)')}
           >
             Submit API
-          </button>
+          </a>
 
           <button
             onClick={handleGitHub}

@@ -171,7 +171,7 @@ export default function Home() {
             <a href="https://github.com/KP-MobileTechie/ai-api-hub" style={{ color: 'var(--accent-bright)', textDecoration: 'none' }}>
               GitHub
             </a>
-            <a href="https://github.com/KP-MobileTechie/ai-api-hub/issues/new" style={{ color: 'var(--text-3)', textDecoration: 'none' }}>
+            <a href="https://github.com/KP-MobileTechie/ai-api-hub/issues/new?template=submit-api.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-3)', textDecoration: 'none' }}>
               Submit an API
             </a>
           </span>

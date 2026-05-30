@@ -2,10 +2,10 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'apiHub — Live AI API Directory',
+  title: 'apiHub · Live AI API Directory',
   description: 'The only AI API directory that health-checks every API daily. Free tiers highlighted, code snippets included.',
   openGraph: {
-    title: 'apiHub — Live AI API Directory',
+    title: 'apiHub · Live AI API Directory',
     description: 'Find the right AI API, fast. Live-tested every day. Free tiers first.',
   },
 }
