@@ -1,29 +1,176 @@
 {
   "groq": [
-    { "date": "2026-05-23", "alive": true, "latencyMs": 198 },
-    { "date": "2026-05-24", "alive": true, "latencyMs": 205 },
-    { "date": "2026-05-25", "alive": true, "latencyMs": 212 },
-    { "date": "2026-05-26", "alive": true, "latencyMs": 201 },
-    { "date": "2026-05-27", "alive": true, "latencyMs": 220 },
-    { "date": "2026-05-28", "alive": true, "latencyMs": 215 },
-    { "date": "2026-05-29", "alive": true, "latencyMs": 210 }
+    {
+      "date": "2026-05-24",
+      "alive": true,
+      "latencyMs": 205
+    },
+    {
+      "date": "2026-05-25",
+      "alive": true,
+      "latencyMs": 212
+    },
+    {
+      "date": "2026-05-26",
+      "alive": true,
+      "latencyMs": 201
+    },
+    {
+      "date": "2026-05-27",
+      "alive": true,
+      "latencyMs": 220
+    },
+    {
+      "date": "2026-05-28",
+      "alive": true,
+      "latencyMs": 215
+    },
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 210
+    },
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 262
+    }
   ],
   "mistral": [
-    { "date": "2026-05-23", "alive": true, "latencyMs": 390 },
-    { "date": "2026-05-24", "alive": true, "latencyMs": 375 },
-    { "date": "2026-05-25", "alive": true, "latencyMs": 395 },
-    { "date": "2026-05-26", "alive": true, "latencyMs": 370 },
-    { "date": "2026-05-27", "alive": true, "latencyMs": 385 },
-    { "date": "2026-05-28", "alive": true, "latencyMs": 380 },
-    { "date": "2026-05-29", "alive": true, "latencyMs": 380 }
+    {
+      "date": "2026-05-24",
+      "alive": true,
+      "latencyMs": 375
+    },
+    {
+      "date": "2026-05-25",
+      "alive": true,
+      "latencyMs": 395
+    },
+    {
+      "date": "2026-05-26",
+      "alive": true,
+      "latencyMs": 370
+    },
+    {
+      "date": "2026-05-27",
+      "alive": true,
+      "latencyMs": 385
+    },
+    {
+      "date": "2026-05-28",
+      "alive": true,
+      "latencyMs": 380
+    },
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 380
+    },
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 464
+    }
   ],
   "cohere": [
-    { "date": "2026-05-23", "alive": true, "latencyMs": 340 },
-    { "date": "2026-05-24", "alive": true, "latencyMs": 355 },
-    { "date": "2026-05-25", "alive": false, "latencyMs": null },
-    { "date": "2026-05-26", "alive": false, "latencyMs": null },
-    { "date": "2026-05-27", "alive": false, "latencyMs": null },
-    { "date": "2026-05-28", "alive": false, "latencyMs": null },
-    { "date": "2026-05-29", "alive": false, "latencyMs": null }
+    {
+      "date": "2026-05-24",
+      "alive": true,
+      "latencyMs": 355
+    },
+    {
+      "date": "2026-05-25",
+      "alive": false,
+      "latencyMs": null
+    },
+    {
+      "date": "2026-05-26",
+      "alive": false,
+      "latencyMs": null
+    },
+    {
+      "date": "2026-05-27",
+      "alive": false,
+      "latencyMs": null
+    },
+    {
+      "date": "2026-05-28",
+      "alive": false,
+      "latencyMs": null
+    },
+    {
+      "date": "2026-05-29",
+      "alive": false,
+      "latencyMs": null
+    },
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 200
+    }
+  ],
+  "huggingface": [
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 78
+    }
+  ],
+  "together": [
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 162
+    }
+  ],
+  "anthropic": [
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 82
+    }
+  ],
+  "openai": [
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 86
+    }
+  ],
+  "voyage": [
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 157
+    }
+  ],
+  "stability": [
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 139
+    }
+  ],
+  "replicate": [
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 363
+    }
+  ],
+  "google-gemini": [
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 138
+    }
+  ],
+  "deepseek": [
+    {
+      "date": "2026-05-29",
+      "alive": true,
+      "latencyMs": 320
+    }
   ]
 }
