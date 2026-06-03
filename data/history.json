@@ -1,11 +1,6 @@
 {
   "groq": [
     {
-      "date": "2026-05-28",
-      "alive": true,
-      "latencyMs": 215
-    },
-    {
       "date": "2026-05-29",
       "alive": true,
       "latencyMs": 210
@@ -34,14 +29,14 @@
       "date": "2026-06-02",
       "alive": true,
       "latencyMs": 121
+    },
+    {
+      "date": "2026-06-03",
+      "alive": true,
+      "latencyMs": 115
     }
   ],
   "mistral": [
-    {
-      "date": "2026-05-28",
-      "alive": true,
-      "latencyMs": 380
-    },
     {
       "date": "2026-05-29",
       "alive": true,
@@ -71,14 +66,14 @@
       "date": "2026-06-02",
       "alive": true,
       "latencyMs": 310
+    },
+    {
+      "date": "2026-06-03",
+      "alive": true,
+      "latencyMs": 318
     }
   ],
   "cohere": [
-    {
-      "date": "2026-05-28",
-      "alive": false,
-      "latencyMs": null
-    },
     {
       "date": "2026-05-29",
       "alive": false,
@@ -108,6 +103,11 @@
       "date": "2026-06-02",
       "alive": true,
       "latencyMs": 135
+    },
+    {
+      "date": "2026-06-03",
+      "alive": true,
+      "latencyMs": 269
     }
   ],
   "huggingface": [
@@ -135,6 +135,11 @@
       "date": "2026-06-02",
       "alive": true,
       "latencyMs": 51
+    },
+    {
+      "date": "2026-06-03",
+      "alive": true,
+      "latencyMs": 32
     }
   ],
   "together": [
@@ -162,6 +167,11 @@
       "date": "2026-06-02",
       "alive": true,
       "latencyMs": 123
+    },
+    {
+      "date": "2026-06-03",
+      "alive": true,
+      "latencyMs": 125
     }
   ],
   "anthropic": [
@@ -189,6 +199,11 @@
       "date": "2026-06-02",
       "alive": true,
       "latencyMs": 40
+    },
+    {
+      "date": "2026-06-03",
+      "alive": true,
+      "latencyMs": 25
     }
   ],
   "openai": [
@@ -216,6 +231,11 @@
       "date": "2026-06-02",
       "alive": true,
       "latencyMs": 26
+    },
+    {
+      "date": "2026-06-03",
+      "alive": true,
+      "latencyMs": 28
     }
   ],
   "voyage": [
@@ -243,6 +263,11 @@
       "date": "2026-06-02",
       "alive": true,
       "latencyMs": 169
+    },
+    {
+      "date": "2026-06-03",
+      "alive": true,
+      "latencyMs": 173
     }
   ],
   "stability": [
@@ -270,6 +295,11 @@
       "date": "2026-06-02",
       "alive": true,
       "latencyMs": 62
+    },
+    {
+      "date": "2026-06-03",
+      "alive": true,
+      "latencyMs": 83
     }
   ],
   "replicate": [
@@ -297,6 +327,11 @@
       "date": "2026-06-02",
       "alive": true,
       "latencyMs": 365
+    },
+    {
+      "date": "2026-06-03",
+      "alive": true,
+      "latencyMs": 312
     }
   ],
   "google-gemini": [
@@ -324,6 +359,11 @@
       "date": "2026-06-02",
       "alive": true,
       "latencyMs": 112
+    },
+    {
+      "date": "2026-06-03",
+      "alive": true,
+      "latencyMs": 118
     }
   ],
   "deepseek": [
@@ -351,6 +391,11 @@
       "date": "2026-06-02",
       "alive": true,
       "latencyMs": 317
+    },
+    {
+      "date": "2026-06-03",
+      "alive": true,
+      "latencyMs": 165
     }
   ]
 }
