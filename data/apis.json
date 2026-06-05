@@ -19,8 +19,8 @@
     "auth": "api_key",
     "status": {
       "alive": true,
-      "latencyMs": 135,
-      "lastChecked": "2026-06-04T09:39:30.135Z"
+      "latencyMs": 99,
+      "lastChecked": "2026-06-05T09:01:05.039Z"
     },
     "tags": [
       "llama3",
@@ -52,8 +52,8 @@
     "auth": "api_key",
     "status": {
       "alive": true,
-      "latencyMs": 366,
-      "lastChecked": "2026-06-04T09:39:30.502Z"
+      "latencyMs": 369,
+      "lastChecked": "2026-06-05T09:01:05.408Z"
     },
     "tags": [
       "mistral-7b",
@@ -84,8 +84,8 @@
     "auth": "api_key",
     "status": {
       "alive": true,
-      "latencyMs": 17,
-      "lastChecked": "2026-06-04T09:39:30.519Z"
+      "latencyMs": 64,
+      "lastChecked": "2026-06-05T09:01:05.473Z"
     },
     "tags": [
       "multi-model",
@@ -116,8 +116,8 @@
     "auth": "api_key",
     "status": {
       "alive": true,
-      "latencyMs": 112,
-      "lastChecked": "2026-06-04T09:39:30.631Z"
+      "latencyMs": 123,
+      "lastChecked": "2026-06-05T09:01:05.596Z"
     },
     "tags": [
       "llama3",
@@ -149,8 +149,8 @@
     "auth": "api_key",
     "status": {
       "alive": true,
-      "latencyMs": 49,
-      "lastChecked": "2026-06-04T09:39:30.680Z"
+      "latencyMs": 47,
+      "lastChecked": "2026-06-05T09:01:05.643Z"
     },
     "tags": [
       "claude",
@@ -183,8 +183,8 @@
     "auth": "api_key",
     "status": {
       "alive": true,
-      "latencyMs": 32,
-      "lastChecked": "2026-06-04T09:39:30.712Z"
+      "latencyMs": 34,
+      "lastChecked": "2026-06-05T09:01:05.677Z"
     },
     "tags": [
       "gpt-4o",
@@ -216,8 +216,8 @@
     "auth": "api_key",
     "status": {
       "alive": true,
-      "latencyMs": 175,
-      "lastChecked": "2026-06-04T09:39:30.887Z"
+      "latencyMs": 199,
+      "lastChecked": "2026-06-05T09:01:05.876Z"
     },
     "tags": [
       "rag",
@@ -249,8 +249,8 @@
     "auth": "api_key",
     "status": {
       "alive": true,
-      "latencyMs": 130,
-      "lastChecked": "2026-06-04T09:39:31.017Z"
+      "latencyMs": 113,
+      "lastChecked": "2026-06-05T09:01:05.989Z"
     },
     "tags": [
       "embeddings",
@@ -281,8 +281,8 @@
     "auth": "api_key",
     "status": {
       "alive": true,
-      "latencyMs": 53,
-      "lastChecked": "2026-06-04T09:39:31.070Z"
+      "latencyMs": 69,
+      "lastChecked": "2026-06-05T09:01:06.059Z"
     },
     "tags": [
       "stable-diffusion",
@@ -314,8 +314,8 @@
     "auth": "api_key",
     "status": {
       "alive": true,
-      "latencyMs": 339,
-      "lastChecked": "2026-06-04T09:39:31.409Z"
+      "latencyMs": 351,
+      "lastChecked": "2026-06-05T09:01:06.410Z"
     },
     "tags": [
       "sdxl",
@@ -347,8 +347,8 @@
     "auth": "api_key",
     "status": {
       "alive": true,
-      "latencyMs": 153,
-      "lastChecked": "2026-06-04T09:39:31.562Z"
+      "latencyMs": 129,
+      "lastChecked": "2026-06-05T09:01:06.540Z"
     },
     "tags": [
       "gemini",
@@ -380,8 +380,8 @@
     "auth": "api_key",
     "status": {
       "alive": true,
-      "latencyMs": 199,
-      "lastChecked": "2026-06-04T09:39:31.762Z"
+      "latencyMs": 215,
+      "lastChecked": "2026-06-05T09:01:06.755Z"
     },
     "tags": [
       "deepseek-v3",
