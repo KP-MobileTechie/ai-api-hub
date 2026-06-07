@@ -18,7 +18,7 @@ export function CompareModal({ apis, onClose }: Props) {
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
     >
       <div
-        className="w-full max-w-3xl max-h-[80vh] overflow-y-auto rounded-[20px] p-7"
+        className="compare-modal w-full max-w-3xl max-h-[80vh] overflow-y-auto rounded-[20px] p-7"
         style={{ background: '#0d0b1a', border: '1px solid rgba(255,255,255,0.1)' }}
       >
         <div className="flex justify-between items-start mb-5">
@@ -36,7 +36,7 @@ export function CompareModal({ apis, onClose }: Props) {
           </button>
         </div>
 
-        <div className="grid gap-3" style={{ gridTemplateColumns: `repeat(${candidates.length}, 1fr)` }}>
+        <div className="compare-grid grid gap-3" style={{ gridTemplateColumns: `repeat(${candidates.length}, 1fr)` }}>
           {candidates.map(api => (
             <div
               key={api.id}

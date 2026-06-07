@@ -22,7 +22,7 @@ export default function Home() {
       <main style={{ position: 'relative', zIndex: 1, paddingBottom: '100px' }}>
 
         {/* Hero */}
-        <section style={{ position: 'relative', overflow: 'hidden', padding: '80px 48px 64px' }}>
+        <section className="hero" style={{ position: 'relative', overflow: 'hidden', padding: '80px 48px 64px' }}>
 
           {/* Animated grid background */}
           <div className="hero-grid" />
@@ -101,20 +101,20 @@ export default function Home() {
             </p>
 
             {/* Stats row */}
-            <div style={{
+            <div className="hero-stats" style={{
               display: 'flex',
               justifyContent: 'center',
               marginBottom: '48px',
               animation: 'fade-up 0.5s ease 0.22s both',
             }}>
               {stats.map((stat, i) => (
-                <div key={stat.label} style={{
+                <div key={stat.label} className="hero-stat" style={{
                   flex: '0 0 auto',
                   textAlign: 'center',
                   padding: '0 32px',
                   borderRight: i < stats.length - 1 ? '1px solid var(--border)' : 'none',
                 }}>
-                  <div style={{
+                  <div className="hero-stat-num" style={{
                     fontFamily: 'var(--font-display)',
                     fontWeight: 800,
                     fontSize: '36px',
@@ -143,14 +143,14 @@ export default function Home() {
         </section>
 
         {/* Cards + filters */}
-        <div style={{ padding: '0 48px' }}>
+        <div className="section-pad" style={{ padding: '0 48px' }}>
           <div id="api-grid">
             <ApiGrid apis={apis} />
           </div>
         </div>
 
         {/* Footer */}
-        <footer style={{
+        <footer className="site-footer" style={{
           marginTop: '80px',
           padding: '24px 48px 0',
           display: 'flex',

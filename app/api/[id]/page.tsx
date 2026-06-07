@@ -22,7 +22,7 @@ export default function ApiDetailPage({ params }: Props) {
   const apiHistory = history[api.id] ?? []
 
   return (
-    <main className="relative z-10 px-10 pb-20 max-w-4xl mx-auto pt-10">
+    <main className="relative z-10 px-5 sm:px-10 pb-20 max-w-4xl mx-auto pt-10">
       <Link
         href="/"
         className="inline-flex items-center gap-2 text-[13px] mb-8"
@@ -31,16 +31,16 @@ export default function ApiDetailPage({ params }: Props) {
         Back to all APIs
       </Link>
 
-      <div className="flex items-start justify-between mb-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between mb-6">
         <div>
-          <h1 className="font-extrabold text-[36px] tracking-tight mb-1" style={{ color: 'var(--text)', fontFamily: 'Manrope, sans-serif' }}>
+          <h1 className="font-extrabold text-[28px] sm:text-[36px] tracking-tight mb-1" style={{ color: 'var(--text)', fontFamily: 'Manrope, sans-serif' }}>
             {api.name}
           </h1>
           <p className="text-[10px] font-mono uppercase tracking-wide" style={{ color: 'var(--text-3)' }}>
             {api.category}
           </p>
         </div>
-        <div className="flex items-center gap-3 mt-2">
+        <div className="flex items-center gap-3 sm:mt-2">
           <StatusBadge status={api.status} />
           <a
             href={api.docsUrl}
@@ -62,7 +62,7 @@ export default function ApiDetailPage({ params }: Props) {
         {api.freeTier.available ? '❆' : '✕'} {api.freeTier.details}
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         <div className="rounded-xl p-4" style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}>
           <h3 className="text-[11px] font-mono uppercase tracking-wide mb-3" style={{ color: 'var(--text-3)' }}>Models</h3>
           <div className="flex flex-wrap gap-1.5">

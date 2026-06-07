@@ -86,7 +86,7 @@ export function NavBar({ liveCount, apis }: Props) {
 
   return (
     <>
-      <nav style={{
+      <nav className="nav-bar" style={{
         position: 'sticky',
         top: 0,
         zIndex: 40,
@@ -129,24 +129,26 @@ export function NavBar({ liveCount, apis }: Props) {
 
         {/* Center nav */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '36px' }}>
-          <a href="#browse" onClick={handleBrowse} style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-2)')}
-          >
-            Browse
-          </a>
-          <a href="#categories" onClick={handleCategories} style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-2)')}
-          >
-            Categories
-          </a>
-          <button onClick={() => setShowCompare(true)} style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-2)')}
-          >
-            Compare
-          </button>
+          <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '36px' }}>
+            <a href="#browse" onClick={handleBrowse} style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-2)')}
+            >
+              Browse
+            </a>
+            <a href="#categories" onClick={handleCategories} style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-2)')}
+            >
+              Categories
+            </a>
+            <button onClick={() => setShowCompare(true)} style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-2)')}
+            >
+              Compare
+            </button>
+          </div>
 
           <div style={{
             display: 'flex', alignItems: 'center', gap: '6px',
@@ -168,8 +170,9 @@ export function NavBar({ liveCount, apis }: Props) {
         </div>
 
         {/* Right actions */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <div className="nav-actions" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           <a
+            className="nav-submit"
             href="https://github.com/KP-MobileTechie/ai-api-hub/issues/new?template=submit-api.md"
             target="_blank"
             rel="noopener noreferrer"
@@ -181,6 +184,7 @@ export function NavBar({ liveCount, apis }: Props) {
           </a>
 
           <button
+            className="nav-cta"
             onClick={handleGitHub}
             style={{
               display: 'flex', alignItems: 'center', gap: '7px',

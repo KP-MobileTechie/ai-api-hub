@@ -319,6 +319,85 @@ body {
   }
 }
 
+/* ------------------------------------------------------------------ */
+/* Responsive overrides — inline styles can't hold media queries, so   */
+/* the layout-sensitive bits use these classes and get overridden here. */
+/* ------------------------------------------------------------------ */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  .nav-bar {
+    padding: 0 20px !important;
+    height: 60px !important;
+  }
+  .nav-links,
+  .nav-submit {
+    display: none !important;
+  }
+  .nav-actions {
+    gap: 12px !important;
+  }
+  .nav-cta {
+    padding: 7px 14px !important;
+    font-size: 12.5px !important;
+  }
+
+  .hero {
+    padding: 56px 20px 40px !important;
+  }
+  .section-pad {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .site-footer {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .compare-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* Phones */
+@media (max-width: 560px) {
+  .hero {
+    padding: 44px 16px 32px !important;
+  }
+  .section-pad {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .site-footer {
+    flex-direction: column !important;
+    gap: 14px !important;
+    text-align: center !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Stats: wrap to a 2x2 grid, drop the dividers */
+  .hero-stats {
+    flex-wrap: wrap !important;
+    gap: 20px 0 !important;
+  }
+  .hero-stat {
+    flex: 0 0 50% !important;
+    padding: 0 8px !important;
+    border-right: none !important;
+  }
+  .hero-stat-num {
+    font-size: 30px !important;
+  }
+
+  .compare-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .compare-modal {
+    padding: 20px !important;
+  }
+}
+
 /* custom thin scrollbar for code */
 .snippet-pre::-webkit-scrollbar { width: 2px; height: 2px; }
 .snippet-pre::-webkit-scrollbar-track { background: transparent; }
