@@ -1,11 +1,6 @@
 {
   "groq": [
     {
-      "date": "2026-06-07",
-      "alive": true,
-      "latencyMs": 142
-    },
-    {
       "date": "2026-06-08",
       "alive": true,
       "latencyMs": 162
@@ -34,14 +29,14 @@
       "date": "2026-06-13",
       "alive": true,
       "latencyMs": 79
+    },
+    {
+      "date": "2026-06-14",
+      "alive": true,
+      "latencyMs": 212
     }
   ],
   "mistral": [
-    {
-      "date": "2026-06-07",
-      "alive": true,
-      "latencyMs": 513
-    },
     {
       "date": "2026-06-08",
       "alive": true,
@@ -71,14 +66,14 @@
       "date": "2026-06-13",
       "alive": true,
       "latencyMs": 501
+    },
+    {
+      "date": "2026-06-14",
+      "alive": true,
+      "latencyMs": 505
     }
   ],
   "cohere": [
-    {
-      "date": "2026-06-07",
-      "alive": true,
-      "latencyMs": 258
-    },
     {
       "date": "2026-06-08",
       "alive": true,
@@ -108,14 +103,14 @@
       "date": "2026-06-13",
       "alive": true,
       "latencyMs": 185
+    },
+    {
+      "date": "2026-06-14",
+      "alive": true,
+      "latencyMs": 254
     }
   ],
   "huggingface": [
-    {
-      "date": "2026-06-07",
-      "alive": true,
-      "latencyMs": 104
-    },
     {
       "date": "2026-06-08",
       "alive": true,
@@ -145,14 +140,14 @@
       "date": "2026-06-13",
       "alive": true,
       "latencyMs": 24
+    },
+    {
+      "date": "2026-06-14",
+      "alive": true,
+      "latencyMs": 145
     }
   ],
   "together": [
-    {
-      "date": "2026-06-07",
-      "alive": true,
-      "latencyMs": 118
-    },
     {
       "date": "2026-06-08",
       "alive": true,
@@ -182,14 +177,14 @@
       "date": "2026-06-13",
       "alive": true,
       "latencyMs": 89
+    },
+    {
+      "date": "2026-06-14",
+      "alive": true,
+      "latencyMs": 147
     }
   ],
   "anthropic": [
-    {
-      "date": "2026-06-07",
-      "alive": true,
-      "latencyMs": 46
-    },
     {
       "date": "2026-06-08",
       "alive": true,
@@ -219,14 +214,14 @@
       "date": "2026-06-13",
       "alive": true,
       "latencyMs": 22
+    },
+    {
+      "date": "2026-06-14",
+      "alive": true,
+      "latencyMs": 118
     }
   ],
   "openai": [
-    {
-      "date": "2026-06-07",
-      "alive": true,
-      "latencyMs": 48
-    },
     {
       "date": "2026-06-08",
       "alive": true,
@@ -256,14 +251,14 @@
       "date": "2026-06-13",
       "alive": true,
       "latencyMs": 35
+    },
+    {
+      "date": "2026-06-14",
+      "alive": true,
+      "latencyMs": 76
     }
   ],
   "voyage": [
-    {
-      "date": "2026-06-07",
-      "alive": true,
-      "latencyMs": 188
-    },
     {
       "date": "2026-06-08",
       "alive": true,
@@ -293,14 +288,14 @@
       "date": "2026-06-13",
       "alive": true,
       "latencyMs": 89
+    },
+    {
+      "date": "2026-06-14",
+      "alive": true,
+      "latencyMs": 137
     }
   ],
   "stability": [
-    {
-      "date": "2026-06-07",
-      "alive": true,
-      "latencyMs": 77
-    },
     {
       "date": "2026-06-08",
       "alive": true,
@@ -330,14 +325,14 @@
       "date": "2026-06-13",
       "alive": true,
       "latencyMs": 78
+    },
+    {
+      "date": "2026-06-14",
+      "alive": true,
+      "latencyMs": 127
     }
   ],
   "replicate": [
-    {
-      "date": "2026-06-07",
-      "alive": true,
-      "latencyMs": 733
-    },
     {
       "date": "2026-06-08",
       "alive": true,
@@ -367,14 +362,14 @@
       "date": "2026-06-13",
       "alive": true,
       "latencyMs": 506
+    },
+    {
+      "date": "2026-06-14",
+      "alive": true,
+      "latencyMs": 548
     }
   ],
   "google-gemini": [
-    {
-      "date": "2026-06-07",
-      "alive": true,
-      "latencyMs": 358
-    },
     {
       "date": "2026-06-08",
       "alive": true,
@@ -404,14 +399,14 @@
       "date": "2026-06-13",
       "alive": true,
       "latencyMs": 275
+    },
+    {
+      "date": "2026-06-14",
+      "alive": true,
+      "latencyMs": 270
     }
   ],
   "deepseek": [
-    {
-      "date": "2026-06-07",
-      "alive": true,
-      "latencyMs": 193
-    },
     {
       "date": "2026-06-08",
       "alive": true,
@@ -441,6 +436,11 @@
       "date": "2026-06-13",
       "alive": true,
       "latencyMs": 99
+    },
+    {
+      "date": "2026-06-14",
+      "alive": true,
+      "latencyMs": 127
     }
   ]
 }
