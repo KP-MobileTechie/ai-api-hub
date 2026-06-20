@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { ApiEntry } from '@/types/api'
 import { StatusBadge } from './StatusBadge'
 import { CodeSnippet } from './CodeSnippet'
@@ -66,6 +67,35 @@ export function ApiCard({ api }: Props) {
 
       {/* Code snippet */}
       <CodeSnippet snippets={api.snippets} latencyMs={api.status.latencyMs} />
+
+      {/* Actions */}
+      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '14px' }}>
+        <a
+          href={api.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary"
+          aria-label={`Get an API key for ${api.name}`}
+        >
+          Get API key →
+        </a>
+        <a
+          href={api.docsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-secondary"
+          aria-label={`Open ${api.name} documentation`}
+        >
+          Docs
+        </a>
+        <Link
+          href={`/api/${api.id}`}
+          className="btn btn-secondary"
+          aria-label={`View details for ${api.name}`}
+        >
+          Details
+        </Link>
+      </div>
     </div>
   )
 }
