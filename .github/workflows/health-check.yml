@@ -12,10 +12,14 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Admin PAT so the write-back push bypasses branch protection
+          # (enforce_admins is off, so admin pushes are allowed direct to master).
+          token: ${{ secrets.HEALTH_CHECK_TOKEN }}
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Run health check
         run: node scripts/health-check.js
