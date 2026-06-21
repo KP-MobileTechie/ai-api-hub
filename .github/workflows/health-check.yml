@@ -14,10 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Classic admin PAT so the write-back push bypasses master's
-          # code-owner PR protection (enforce_admins is off, so an admin
-          # token may push directly). A fine-grained PAT cannot do this.
-          token: ${{ secrets.PROMOTE_TOKEN }}
+          # Don't persist any credential in git config — the admin PAT is
+          # scoped to only the push step below to limit its blast radius.
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
@@ -30,6 +29,11 @@ jobs:
         run: node scripts/generate-badges.js
 
       - name: Commit updated status
+        env:
+          # Classic admin PAT — the only step that gets it. Admin push bypasses
+          # master's code-owner PR protection (enforce_admins is off). A
+          # fine-grained PAT cannot bypass protection, so a classic one is used.
+          PROMOTE_TOKEN: ${{ secrets.PROMOTE_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -39,7 +43,7 @@ jobs:
             exit 0
           fi
           git commit -m "chore: daily health check [skip ci]"
-          git push origin HEAD:master
+          git push "https://x-access-token:${PROMOTE_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
 
       - name: Open or update down-alert issue
         env:
