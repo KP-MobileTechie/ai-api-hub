@@ -33,6 +33,7 @@ jobs:
           fi
 
       - name: Create or update promotion PR
+        id: pr
         if: steps.diff.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -40,10 +41,30 @@ jobs:
           EXISTING=$(gh pr list --head health-status --base master --state open --json number --jq '.[0].number // empty')
           if [ -n "$EXISTING" ]; then
             echo "PR #$EXISTING already open; it auto-updates with the branch."
+            NUM="$EXISTING"
           else
             gh pr create \
               --base master \
               --head health-status \
               --title "chore: promote daily health data" \
               --body "Automated promotion of health-status data to master."
+            NUM=$(gh pr list --head health-status --base master --state open --json number --jq '.[0].number // empty')
           fi
+          echo "number=$NUM" >> "$GITHUB_OUTPUT"
+
+      - name: Auto-merge promotion PR
+        if: steps.diff.outputs.changed == 'true' && steps.pr.outputs.number != ''
+        env:
+          # Admin PAT (classic, repo scope). master enforces code-owner review,
+          # which the default GITHUB_TOKEN cannot bypass — only an admin can.
+          # Leave PROMOTE_TOKEN unset to keep promotion PRs manual-merge.
+          GH_TOKEN: ${{ secrets.PROMOTE_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "PROMOTE_TOKEN not set — leaving PR #${{ steps.pr.outputs.number }} open for manual merge."
+            exit 0
+          fi
+          # --admin bypasses branch protection (enforce_admins is off, token owner is admin).
+          # Do NOT delete health-status — the daily health check force-pushes to it.
+          gh pr merge "${{ steps.pr.outputs.number }}" --squash --admin
+          echo "Auto-merged PR #${{ steps.pr.outputs.number }}."
