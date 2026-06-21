@@ -49,4 +49,13 @@ describe('ApiCard', () => {
     render(<ApiCard api={api} />)
     expect(screen.getByText('inference')).toBeInTheDocument()
   })
+
+  it('shows latency and price as metric pills when present', () => {
+    const withPrice = { ...api, status: { ...api.status, latencyMs: 125, alive: true }, pricing: '$0.05/1M' }
+    render(<ApiCard api={withPrice} />)
+    const latencyPill = screen.getByText(/125\s*ms/i, { selector: '.metric-pill' })
+    expect(latencyPill).toBeInTheDocument()
+    const pricePill = screen.getByText(/\$0\.05\/1M/, { selector: '.metric-pill' })
+    expect(pricePill).toBeInTheDocument()
+  })
 })

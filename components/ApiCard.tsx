@@ -7,9 +7,11 @@ import { formatRelative } from '@/lib/uptime'
 
 interface Props {
   api: ApiEntry
+  selected?: boolean
+  onToggleCompare?: (id: string) => void
 }
 
-export function ApiCard({ api }: Props) {
+export function ApiCard({ api, selected = false, onToggleCompare }: Props) {
   const statusClass = api.status.alive ? 'is-live' : 'is-down'
   const now = new Date().toISOString()
 
@@ -45,6 +47,42 @@ export function ApiCard({ api }: Props) {
         </div>
       </div>
 
+      {/* Decision-first metric pills */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          flexWrap: 'wrap',
+          marginBottom: '12px',
+        }}
+      >
+        <span
+          className="metric-pill"
+          style={{
+            color: api.status.alive ? 'var(--live)' : 'var(--down)',
+            borderColor: api.status.alive ? 'var(--live)' : 'var(--down)',
+          }}
+        >
+          {api.status.alive ? '● Live' : '○ Down'}
+        </span>
+        <span
+          className="metric-pill"
+          style={
+            api.freeTier.available
+              ? { color: 'var(--accent-bright)', borderColor: 'var(--accent)' }
+              : undefined
+          }
+          title={api.freeTier.details}
+        >
+          {api.freeTier.available ? '✦ Free tier' : '✕ No free tier'}
+        </span>
+        {api.status.latencyMs !== null && (
+          <span className="metric-pill">~{api.status.latencyMs}ms</span>
+        )}
+        {api.pricing && <span className="metric-pill">{api.pricing}</span>}
+      </div>
+
       {/* Description */}
       <p style={{
         fontSize: '12.5px',
@@ -62,7 +100,7 @@ export function ApiCard({ api }: Props) {
         {api.freeTier.details}
       </div>
 
-      {/* Metrics row */}
+      {/* Last checked */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
@@ -72,9 +110,6 @@ export function ApiCard({ api }: Props) {
         color: 'var(--text-3)',
         marginBottom: '12px',
       }}>
-        {api.status.latencyMs !== null && (
-          <span>~{api.status.latencyMs}ms latency</span>
-        )}
         <span>checked {formatRelative(api.status.lastChecked, now)}</span>
       </div>
 
@@ -115,6 +150,22 @@ export function ApiCard({ api }: Props) {
         >
           Details
         </Link>
+        {onToggleCompare && (
+          <button
+            type="button"
+            onClick={() => onToggleCompare(api.id)}
+            aria-pressed={selected}
+            aria-label={selected ? `Remove ${api.name} from comparison` : `Add ${api.name} to comparison`}
+            className="btn btn-secondary"
+            style={
+              selected
+                ? { color: 'var(--accent-bright)', borderColor: 'var(--accent)', background: 'var(--surface-hover)' }
+                : undefined
+            }
+          >
+            {selected ? '✓ Comparing' : '+ Compare'}
+          </button>
+        )}
       </div>
     </div>
   )

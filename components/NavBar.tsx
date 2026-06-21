@@ -86,7 +86,21 @@ export function NavBar({ liveCount, apis }: Props) {
 
   return (
     <>
-      <nav className="nav-bar" style={{
+      {/* Mobile collapse rules for NavBar actions (scoped; globals.css is owned elsewhere). */}
+      <style>{`
+        @media (max-width: 768px) {
+          .nav-compare-label { display: none; }
+          .nav-compare { padding: 6px; }
+          .nav-live-label { display: none; }
+          .nav-cta-label { display: none; }
+          .nav-cta { padding: 8px 12px !important; }
+        }
+        @media (max-width: 380px) {
+          .nav-bar { padding: 0 14px !important; }
+          .nav-actions { gap: 10px !important; }
+        }
+      `}</style>
+      <nav className="nav-bar gap-2" style={{
         position: 'sticky',
         top: 0,
         zIndex: 40,
@@ -103,7 +117,7 @@ export function NavBar({ liveCount, apis }: Props) {
       }}>
 
         {/* Wordmark */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '11px', cursor: 'default', userSelect: 'none' }}>
+        <div className="shrink-0" style={{ display: 'flex', alignItems: 'center', gap: '11px', cursor: 'default', userSelect: 'none' }}>
           <LogoMark />
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '1px', lineHeight: 1 }}>
             <span style={{
@@ -128,7 +142,7 @@ export function NavBar({ liveCount, apis }: Props) {
         </div>
 
         {/* Center nav */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '36px' }}>
+        <div className="min-w-0" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '36px' }}>
             <a href="#browse" onClick={handleBrowse} style={linkStyle}
               onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
@@ -142,15 +156,38 @@ export function NavBar({ liveCount, apis }: Props) {
             >
               Categories
             </a>
-            <button onClick={() => setShowCompare(true)} style={linkStyle}
-              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-2)')}
-            >
-              Compare
-            </button>
           </div>
 
-          <div style={{
+          {/* Compare — kept reachable on every breakpoint (icon-only on mobile) */}
+          <button
+            className="nav-compare shrink-0"
+            onClick={() => setShowCompare(true)}
+            aria-label="Compare APIs"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '7px',
+              fontSize: '14px', fontWeight: 500, letterSpacing: '0.01em',
+              fontFamily: 'var(--font-body)',
+              color: 'var(--text-2)',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '6px 4px',
+              transition: 'color 0.15s',
+            }}
+            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-2)')}
+          >
+            <svg className="nav-compare-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <line x1="3" y1="6" x2="13" y2="6" />
+              <line x1="3" y1="12" x2="17" y2="12" />
+              <line x1="3" y1="18" x2="10" y2="18" />
+              <polyline points="18 4 21 7 18 10" />
+              <line x1="21" y1="7" x2="13" y2="7" />
+            </svg>
+            <span className="nav-compare-label">Compare</span>
+          </button>
+
+          <div className="nav-live shrink-0" style={{
             display: 'flex', alignItems: 'center', gap: '6px',
             background: 'rgba(16,185,129,0.07)',
             border: '1px solid rgba(16,185,129,0.18)',
@@ -159,18 +196,20 @@ export function NavBar({ liveCount, apis }: Props) {
             fontSize: '11px',
             fontFamily: 'var(--font-mono)',
             color: 'var(--live)',
+            whiteSpace: 'nowrap',
           }}>
             <div style={{
               width: '6px', height: '6px', borderRadius: '50%',
               background: 'var(--live)',
               animation: 'pulse-dot 2s ease-in-out infinite',
             }} />
-            {liveCount} live
+            <span>{liveCount}</span>
+            <span className="nav-live-label">live</span>
           </div>
         </div>
 
         {/* Right actions */}
-        <div className="nav-actions" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <div className="nav-actions shrink-0" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           <a
             className="nav-submit"
             href="https://github.com/KP-MobileTechie/ai-api-hub/issues/new?template=submit-api.md"
@@ -184,13 +223,15 @@ export function NavBar({ liveCount, apis }: Props) {
           </a>
 
           <button
-            className="nav-cta"
+            className="nav-cta shrink-0"
             onClick={handleGitHub}
+            aria-label="Star on GitHub"
             style={{
               display: 'flex', alignItems: 'center', gap: '7px',
               fontSize: '13.5px', fontWeight: 600,
               padding: '8px 18px',
               borderRadius: '9px',
+              whiteSpace: 'nowrap',
               border: '1px solid rgba(139,92,246,0.3)',
               cursor: 'pointer',
               color: '#fff',
@@ -210,7 +251,7 @@ export function NavBar({ liveCount, apis }: Props) {
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
             </svg>
-            Star on GitHub
+            <span className="nav-cta-label">Star on GitHub</span>
           </button>
         </div>
       </nav>
