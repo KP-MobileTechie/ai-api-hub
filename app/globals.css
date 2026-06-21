@@ -239,6 +239,40 @@ body {
     opacity: 0.75;
   }
 
+  /* favorite star */
+  .fav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-3);
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: color 0.15s ease, transform 0.12s ease;
+  }
+
+  .fav-btn:hover {
+    color: var(--accent-bright);
+  }
+
+  .fav-btn.is-fav {
+    color: var(--accent-bright);
+  }
+
+  .fav-btn:active {
+    transform: scale(0.9);
+  }
+
+  .fav-btn:disabled {
+    cursor: default;
+  }
+
   /* filter chips */
   .chip {
     display: inline-flex;

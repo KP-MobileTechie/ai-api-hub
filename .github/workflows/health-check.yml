@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
     steps:
       - uses: actions/checkout@v4
 
@@ -20,11 +21,14 @@ jobs:
       - name: Run health check
         run: node scripts/health-check.js
 
+      - name: Generate status badges
+        run: node scripts/generate-badges.js
+
       - name: Commit updated status
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/apis.json data/history.json
+          git add data/apis.json data/history.json public/badge
           if git diff --cached --quiet; then
             echo "No status changes to publish."
             exit 0
@@ -34,3 +38,34 @@ jobs:
           # unprotected branch instead. Force-push keeps it as a mirror of
           # the latest run (the default GITHUB_TOKEN can write here).
           git push --force origin HEAD:health-status
+
+      - name: Open or update down-alert issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TITLE="⚠️ API health alert"
+          if [ ! -f data/down.json ]; then
+            echo "No down.json produced; skipping alert."
+            exit 0
+          fi
+          DOWN_COUNT=$(node -e "process.stdout.write(String(JSON.parse(require('fs').readFileSync('data/down.json','utf-8')).length))")
+          EXISTING=$(gh issue list --state open --search "$TITLE in:title" --json number,title \
+            --jq "[.[] | select(.title == \"$TITLE\")][0].number // empty")
+
+          if [ "$DOWN_COUNT" -eq 0 ]; then
+            echo "All APIs healthy."
+            if [ -n "$EXISTING" ]; then
+              gh issue close "$EXISTING" --comment "All monitored APIs are back up as of $(date -u +%Y-%m-%dT%H:%M:%SZ)."
+            fi
+            exit 0
+          fi
+
+          BODY=$(node -e "const d=JSON.parse(require('fs').readFileSync('data/down.json','utf-8'));console.log('The following APIs were reported DOWN by the latest health check (run '+new Date().toISOString()+'):\n');for(const a of d){console.log('- **'+a.name+'** (\`'+a.id+'\`)')}")
+
+          if [ -n "$EXISTING" ]; then
+            gh issue edit "$EXISTING" --body "$BODY"
+            echo "Updated issue #$EXISTING"
+          else
+            gh issue create --title "$TITLE" --body "$BODY"
+            echo "Created new down-alert issue"
+          fi

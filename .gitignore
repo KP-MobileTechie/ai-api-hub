@@ -35,6 +35,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# ephemeral health-check artifact (regenerated each run; published to health-status, not committed)
+/data/down.json
+
 # local tooling
 .superpowers/
 qa.js

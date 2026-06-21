@@ -1,11 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import type { ApiEntry, FilterType } from '@/types/api'
+import type { ApiEntry, FilterType, SortKey } from '@/types/api'
 import { ApiCard } from './ApiCard'
 import { SearchBar } from './SearchBar'
 import { FilterChips } from './FilterChips'
-import { filterApis } from '@/lib/filter'
+import { SortControl } from './SortControl'
+import { filterApis, sortApis } from '@/lib/filter'
 
 interface Props {
   apis: ApiEntry[]
@@ -14,8 +15,9 @@ interface Props {
 export function ApiGrid({ apis }: Props) {
   const [query, setQuery] = useState('')
   const [filter, setFilter] = useState<FilterType>('all')
+  const [sort, setSort] = useState<SortKey>('recommended')
 
-  const filtered = filterApis(apis, query, filter)
+  const filtered = sortApis(filterApis(apis, query, filter), sort)
 
   return (
     <>
@@ -27,9 +29,12 @@ export function ApiGrid({ apis }: Props) {
           <h2 className="text-lg font-bold" style={{ color: 'var(--text)', fontFamily: 'Manrope, sans-serif' }}>All APIs</h2>
           <p className="text-[13px] mt-0.5" style={{ color: 'var(--text-3)' }}>Sorted by free tier, then popularity</p>
         </div>
-        <span className="text-[13px] font-mono" style={{ color: 'var(--text-3)' }}>
-          Showing {filtered.length} result{filtered.length !== 1 ? 's' : ''}
-        </span>
+        <div className="flex items-center gap-3 flex-wrap">
+          <SortControl active={sort} onChange={setSort} />
+          <span className="text-[13px] font-mono" style={{ color: 'var(--text-3)' }}>
+            Showing {filtered.length} result{filtered.length !== 1 ? 's' : ''}
+          </span>
+        </div>
       </div>
 
       {filtered.length === 0 ? (

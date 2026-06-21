@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="83" height="20" role="img" aria-label="Mistral: up">
+  <title>Mistral: up</title>
+  <rect width="59" height="20" fill="#555"/>
+  <rect x="59" width="24" height="20" fill="#10b981"/>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11">
+    <text x="29.5" y="14">Mistral</text>
+    <text x="71" y="14">up</text>
+  </g>
+</svg>

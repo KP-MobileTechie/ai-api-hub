@@ -2,6 +2,8 @@ import Link from 'next/link'
 import type { ApiEntry } from '@/types/api'
 import { StatusBadge } from './StatusBadge'
 import { CodeSnippet } from './CodeSnippet'
+import { FavoriteButton } from './FavoriteButton'
+import { formatRelative } from '@/lib/uptime'
 
 interface Props {
   api: ApiEntry
@@ -9,6 +11,7 @@ interface Props {
 
 export function ApiCard({ api }: Props) {
   const statusClass = api.status.alive ? 'is-live' : 'is-down'
+  const now = new Date().toISOString()
 
   return (
     <div className={`api-card ${statusClass}`}>
@@ -36,7 +39,8 @@ export function ApiCard({ api }: Props) {
             {api.category}
           </div>
         </div>
-        <div style={{ flexShrink: 0, marginLeft: '10px' }}>
+        <div style={{ flexShrink: 0, marginLeft: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <FavoriteButton apiId={api.id} />
           <StatusBadge status={api.status} />
         </div>
       </div>
@@ -56,6 +60,22 @@ export function ApiCard({ api }: Props) {
       <div className={`card-free ${api.freeTier.available ? '' : 'no-free'}`}>
         <span style={{ opacity: 0.7, fontSize: '10px' }}>{api.freeTier.available ? '✦' : '✕'}</span>
         {api.freeTier.details}
+      </div>
+
+      {/* Metrics row */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        fontFamily: 'var(--font-mono)',
+        fontSize: '10px',
+        color: 'var(--text-3)',
+        marginBottom: '12px',
+      }}>
+        {api.status.latencyMs !== null && (
+          <span>~{api.status.latencyMs}ms latency</span>
+        )}
+        <span>checked {formatRelative(api.status.lastChecked, now)}</span>
       </div>
 
       {/* Tags */}

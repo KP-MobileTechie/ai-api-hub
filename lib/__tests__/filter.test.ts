@@ -1,4 +1,4 @@
-import { filterApis } from '../filter'
+import { filterApis, sortApis } from '../filter'
 import type { ApiEntry } from '@/types/api'
 
 const makeApi = (overrides: Partial<ApiEntry>): ApiEntry => ({
@@ -76,5 +76,37 @@ describe('filterApis', () => {
 
   it('query is case-insensitive', () => {
     expect(filterApis(apis, 'GROQ', 'all')).toHaveLength(1)
+  })
+})
+
+describe('sortApis', () => {
+  it('recommended keeps the original order (stable)', () => {
+    const result = sortApis(apis, 'recommended')
+    expect(result.map(a => a.id)).toEqual(['groq', 'cohere', 'stability'])
+  })
+
+  it('recommended returns the same array reference (no copy)', () => {
+    expect(sortApis(apis, 'recommended')).toBe(apis)
+  })
+
+  it('name sorts alphabetically by name', () => {
+    const result = sortApis(apis, 'name')
+    expect(result.map(a => a.name)).toEqual(['Cohere', 'Groq', 'Stability AI'])
+  })
+
+  it('latency puts alive APIs first, then ascending latency, nulls last', () => {
+    const result = sortApis(apis, 'latency')
+    expect(result.map(a => a.id)).toEqual(['groq', 'stability', 'cohere'])
+  })
+
+  it('uptime puts alive APIs first, then ascending latency as a proxy', () => {
+    const result = sortApis(apis, 'uptime')
+    expect(result.map(a => a.id)).toEqual(['groq', 'stability', 'cohere'])
+  })
+
+  it('does not mutate the input array', () => {
+    const before = apis.map(a => a.id)
+    sortApis(apis, 'name')
+    expect(apis.map(a => a.id)).toEqual(before)
   })
 })

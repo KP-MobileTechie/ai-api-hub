@@ -1,0 +1,49 @@
+name: Promote health data
+
+on:
+  workflow_run:
+    workflows: ["Daily health check"]
+    types: [completed]
+  workflow_dispatch:
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Fetch health-status branch
+        run: git fetch origin health-status
+
+      - name: Check for differences
+        id: diff
+        run: |
+          if git diff --quiet master origin/health-status -- data/apis.json data/history.json public/badge; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No differences between master and health-status."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "health-status differs from master."
+          fi
+
+      - name: Create or update promotion PR
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXISTING=$(gh pr list --head health-status --base master --state open --json number --jq '.[0].number // empty')
+          if [ -n "$EXISTING" ]; then
+            echo "PR #$EXISTING already open; it auto-updates with the branch."
+          else
+            gh pr create \
+              --base master \
+              --head health-status \
+              --title "chore: promote daily health data" \
+              --body "Automated promotion of health-status data to master."
+          fi

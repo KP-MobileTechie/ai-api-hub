@@ -39,7 +39,14 @@ export interface ApiEntry {
   status: ApiStatus
   tags: string[]
   snippets: Snippets
+  pricing?: string
+  rateLimit?: string
+  freeCredits?: string
+  sdkLanguages?: string[]
+  regions?: string[]
 }
+
+export type SortKey = 'recommended' | 'latency' | 'uptime' | 'name'
 
 export interface HistoryEntry {
   date: string

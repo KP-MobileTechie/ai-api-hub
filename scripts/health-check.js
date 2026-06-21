@@ -31,9 +31,16 @@ function pingUrl(url, timeoutMs = 5000) {
   })
 }
 
+function collectDown(apis) {
+  return apis
+    .filter(api => !(api.status && api.status.alive))
+    .map(api => ({ id: api.id, name: api.name }))
+}
+
 async function run() {
   const dataPath = path.join(process.cwd(), 'data', 'apis.json')
   const historyPath = path.join(process.cwd(), 'data', 'history.json')
+  const downPath = path.join(process.cwd(), 'data', 'down.json')
   const apis = JSON.parse(fs.readFileSync(dataPath, 'utf-8'))
   const history = JSON.parse(fs.readFileSync(historyPath, 'utf-8'))
 
@@ -51,11 +58,19 @@ async function run() {
     if (history[api.id].length > 7) history[api.id] = history[api.id].slice(-7)
   }
 
+  const down = collectDown(apis)
+
   fs.writeFileSync(dataPath, JSON.stringify(apis, null, 2))
   fs.writeFileSync(historyPath, JSON.stringify(history, null, 2))
+  fs.writeFileSync(downPath, JSON.stringify(down, null, 2))
   console.log('Done. Updated apis.json and history.json.')
+  if (down.length) {
+    console.log(`${down.length} API(s) DOWN: ${down.map(d => d.id).join(', ')}`)
+  } else {
+    console.log('All APIs are up.')
+  }
 }
 
 if (require.main === module) run().catch(console.error)
 
-module.exports = { classifyResponse, buildStatusUpdate, pingUrl }
+module.exports = { classifyResponse, buildStatusUpdate, pingUrl, collectDown }
