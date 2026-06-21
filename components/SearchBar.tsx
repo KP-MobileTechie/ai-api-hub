@@ -64,6 +64,7 @@ export function SearchBar({ value, onChange }: Props) {
       {value ? (
         <button
           onClick={() => onChange('')}
+          aria-label="clear"
           style={{
             position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)',
             background: 'rgba(255,255,255,0.06)',
@@ -76,7 +77,7 @@ export function SearchBar({ value, onChange }: Props) {
             cursor: 'pointer',
           }}
         >
-          esc
+          clear
         </button>
       ) : (
         <span style={{

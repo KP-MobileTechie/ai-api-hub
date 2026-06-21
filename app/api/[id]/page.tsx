@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { loadApis, loadHistory } from '@/lib/data'
 import { StatusBadge } from '@/components/StatusBadge'
 import { CodeSnippet } from '@/components/CodeSnippet'
+import { computeUptime, formatRelative } from '@/lib/uptime'
 import type { ApiEntry } from '@/types/api'
 
 export function generateStaticParams() {
@@ -13,6 +14,20 @@ interface Props {
   params: { id: string }
 }
 
+export async function generateMetadata({ params }: Props) {
+  const api = loadApis().find((a: ApiEntry) => a.id === params.id)
+  if (!api) return {}
+  const title = `${api.name} — AI API Hub`
+  return {
+    title,
+    description: api.description,
+    openGraph: {
+      title,
+      description: api.description,
+    },
+  }
+}
+
 export default function ApiDetailPage({ params }: Props) {
   const apis = loadApis()
   const history = loadHistory()
@@ -20,6 +35,7 @@ export default function ApiDetailPage({ params }: Props) {
   if (!api) notFound()
 
   const apiHistory = history[api.id] ?? []
+  const uptime = computeUptime(apiHistory)
 
   return (
     <main className="relative z-10 px-5 sm:px-10 pb-20 max-w-4xl mx-auto pt-10">
@@ -86,7 +102,28 @@ export default function ApiDetailPage({ params }: Props) {
           <h3 className="text-[11px] font-mono uppercase tracking-wide mb-3" style={{ color: 'var(--text-3)' }}>Details</h3>
           <div className="text-[13px] space-y-1.5" style={{ color: 'var(--text-2)' }}>
             <div><span style={{ color: 'var(--text-3)' }}>Auth: </span>{api.auth}</div>
-            {api.status.latencyMs && <div><span style={{ color: 'var(--text-3)' }}>Avg latency: </span>{api.status.latencyMs}ms</div>}
+            {uptime.uptimePct !== null && (
+              <div><span style={{ color: 'var(--text-3)' }}>Uptime: </span>{uptime.uptimePct}% uptime · {uptime.sampleDays}d</div>
+            )}
+            {uptime.avgLatencyMs !== null && (
+              <div><span style={{ color: 'var(--text-3)' }}>Avg latency: </span>{uptime.avgLatencyMs}ms</div>
+            )}
+            <div><span style={{ color: 'var(--text-3)' }}>Checked: </span>{formatRelative(api.status.lastChecked, new Date().toISOString())}</div>
+            {api.pricing && <div><span style={{ color: 'var(--text-3)' }}>Pricing: </span>{api.pricing}</div>}
+            {api.rateLimit && <div><span style={{ color: 'var(--text-3)' }}>Rate limit: </span>{api.rateLimit}</div>}
+            {api.freeCredits && <div><span style={{ color: 'var(--text-3)' }}>Free credits: </span>{api.freeCredits}</div>}
+            {api.sdkLanguages && api.sdkLanguages.length > 0 && (
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span style={{ color: 'var(--text-3)' }}>SDKs: </span>
+                {api.sdkLanguages.map(s => <span key={s} className="tag">{s}</span>)}
+              </div>
+            )}
+            {api.regions && api.regions.length > 0 && (
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span style={{ color: 'var(--text-3)' }}>Regions: </span>
+                {api.regions.map(r => <span key={r} className="tag">{r}</span>)}
+              </div>
+            )}
             <div><span style={{ color: 'var(--text-3)' }}>Tags: </span>{api.tags.join(', ')}</div>
           </div>
         </div>

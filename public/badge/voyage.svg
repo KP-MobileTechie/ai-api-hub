@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="97" height="20" role="img" aria-label="Voyage AI: up">
+  <title>Voyage AI: up</title>
+  <rect width="73" height="20" fill="#555"/>
+  <rect x="73" width="24" height="20" fill="#10b981"/>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11">
+    <text x="36.5" y="14">Voyage AI</text>
+    <text x="85" y="14">up</text>
+  </g>
+</svg>
