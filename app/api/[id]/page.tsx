@@ -40,19 +40,32 @@ export default function ApiDetailPage({ params }: Props) {
             {api.category}
           </p>
         </div>
-        <div className="flex items-center gap-3 sm:mt-2">
+        <div className="flex flex-col items-stretch gap-2 sm:items-end sm:mt-2">
           <StatusBadge status={api.status} />
-          <a
-            href={api.docsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[13px] font-semibold px-4 py-1.5 rounded-lg text-white"
-            style={{ background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))' }}
-          >
-            View docs
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href={api.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              Get API key →
+            </a>
+            <a
+              href={api.docsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary"
+            >
+              Documentation
+            </a>
+          </div>
         </div>
       </div>
+
+      <p className="text-[13px] mb-6" style={{ color: 'var(--text-3)' }}>
+        “Get API key” opens {api.name}’s console where you can sign in, claim free credits, and generate your key. “Documentation” shows how to set it up and call the API.
+      </p>
 
       <p className="text-[15px] leading-[1.6] mb-6" style={{ color: 'var(--text-2)' }}>
         {api.description}
