@@ -33,7 +33,7 @@ jobs:
           # Classic admin PAT — the only step that gets it. Admin push bypasses
           # master's code-owner PR protection (enforce_admins is off). A
           # fine-grained PAT cannot bypass protection, so a classic one is used.
-          PROMOTE_TOKEN: ${{ secrets.PROMOTE_TOKEN }}
+          PROMOTE_TOKEN: ${{ secrets.HEALTH_CHECK_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
